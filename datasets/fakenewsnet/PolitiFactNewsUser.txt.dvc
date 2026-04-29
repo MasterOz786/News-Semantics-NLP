@@ -1,0 +1,5 @@
+outs:
+- md5: a77d56b691d1c17b8d3c2a4be602128d
+  size: 370518
+  hash: md5
+  path: PolitiFactNewsUser.txt

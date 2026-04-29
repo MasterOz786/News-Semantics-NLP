@@ -1,0 +1,7 @@
+stages:
+  generate_fake_news_dataset:
+    cmd: ./venv311/bin/python3 datasets/scripts/fake-generate.py
+    deps:
+    - datasets/scripts/fake-generate.py
+    outs:
+    - datasets/generated_fakenews/fake_news_dataset.csv

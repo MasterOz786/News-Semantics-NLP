@@ -1,0 +1,5 @@
+outs:
+- md5: b9331a35cbef6158b213f7764cfdea0b
+  size: 845227
+  hash: md5
+  path: PolitiFact_fake_news_content.csv

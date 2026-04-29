@@ -1,0 +1,5 @@
+outs:
+- md5: 35ff6923a249282ebcb8ff916bbd5e29
+  size: 807605
+  hash: md5
+  path: NewsRealCOVID-19_7.csv

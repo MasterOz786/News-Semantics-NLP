@@ -1,0 +1,5 @@
+outs:
+- md5: 3537ad9a564618948c0ba59aa6caa74a
+  size: 3076
+  hash: md5
+  path: BuzzFeedNews.txt

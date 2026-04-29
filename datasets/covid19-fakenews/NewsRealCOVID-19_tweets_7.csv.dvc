@@ -1,0 +1,5 @@
+outs:
+- md5: 41d914512d5969f78e90e3eb47afdcd5
+  size: 1409860
+  hash: md5
+  path: NewsRealCOVID-19_tweets_7.csv

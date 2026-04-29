@@ -1,0 +1,5 @@
+outs:
+- md5: e12626cd9d74cd3973606a917512b28b
+  size: 172
+  hash: md5
+  path: ClaimFakeCOVID-19_7.csv

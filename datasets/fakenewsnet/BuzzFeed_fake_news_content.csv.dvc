@@ -1,0 +1,5 @@
+outs:
+- md5: 212649113fb919d24b168e2977c83bed
+  size: 651326
+  hash: md5
+  path: BuzzFeed_fake_news_content.csv

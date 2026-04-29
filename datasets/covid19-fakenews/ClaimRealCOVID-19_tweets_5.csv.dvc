@@ -1,0 +1,5 @@
+outs:
+- md5: f010a45fc3931de490a6117596140524
+  size: 177590
+  hash: md5
+  path: ClaimRealCOVID-19_tweets_5.csv

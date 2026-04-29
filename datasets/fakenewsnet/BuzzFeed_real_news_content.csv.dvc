@@ -1,0 +1,5 @@
+outs:
+- md5: 4c801fa2853ef81f71f5d32e98fae87e
+  size: 607199
+  hash: md5
+  path: BuzzFeed_real_news_content.csv

@@ -1,0 +1,5 @@
+outs:
+- md5: a97846d24b833a40305d0af0a6bef875
+  size: 170691
+  hash: md5
+  path: NewsFakeCOVID-19_7.csv

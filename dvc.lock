@@ -1,0 +1,14 @@
+schema: '2.0'
+stages:
+  generate_fake_news_dataset:
+    cmd: ./venv311/bin/python3 datasets/scripts/fake-generate.py
+    deps:
+    - path: datasets/scripts/fake-generate.py
+      hash: md5
+      md5: 00f4d548edf41245815fbcbd0a2d6bdf
+      size: 1189
+    outs:
+    - path: datasets/generated_fakenews/fake_news_dataset.csv
+      hash: md5
+      md5: c9a4f2a8348434fddde5ec19e3ad34ae
+      size: 11099

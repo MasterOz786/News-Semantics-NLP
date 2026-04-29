@@ -1,0 +1,5 @@
+outs:
+- md5: 1df185ef5aaeafbd3bf3ddeb0d30ff45
+  size: 256846
+  hash: md5
+  path: NewsFakeCOVID-19_tweets_replies_5.csv
