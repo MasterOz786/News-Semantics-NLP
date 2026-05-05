@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import html
 import math
 import random
@@ -44,8 +45,72 @@ ensure_nltk_resources()
 
 class DatasetLoader:
     @staticmethod
+    def _read_csv_file(file_path: Path) -> pd.DataFrame:
+        try:
+            return pd.read_csv(file_path, encoding="utf-8", engine="python")
+        except Exception:
+            return pd.read_csv(file_path, encoding="latin1", engine="python")
+
+    @staticmethod
+    def _resolve_dataset_dir(root_dir: Path, dataset_name: str) -> Path:
+        root = Path(root_dir)
+        candidate = root / "datasets" / dataset_name
+        if candidate.exists():
+            return candidate
+        return root / dataset_name
+
+    @staticmethod
+    def _resolve_dataset_dir(root_dir: Path, dataset_name: str) -> Path:
+        root = Path(root_dir)
+        candidate = root / "datasets" / dataset_name
+        if candidate.exists():
+            return candidate
+        return root / dataset_name
+
+    @staticmethod
+    def _read_tsv_file(file_path: Path) -> pd.DataFrame:
+        columns = [
+            "id",
+            "label",
+            "statement",
+            "subject",
+            "speaker",
+            "job_title",
+            "state",
+            "party",
+            "barely_true",
+            "false",
+            "half_true",
+            "mostly_true",
+            "pants_fire",
+            "context",
+        ]
+        try:
+            return pd.read_csv(
+                file_path,
+                sep="\t",
+                names=columns,
+                header=None,
+                quotechar='"',
+                quoting=csv.QUOTE_NONE,
+                encoding="utf-8",
+                engine="python",
+            )
+        except Exception:
+            return pd.read_csv(
+                file_path,
+                sep="\t",
+                names=columns,
+                header=None,
+                quotechar='"',
+                quoting=csv.QUOTE_NONE,
+                encoding="latin1",
+                engine="python",
+            )
+
+    @staticmethod
     def load_covid19_fakenews(root_dir: Path, sample_size: Optional[int] = None) -> pd.DataFrame:
-        path = Path(root_dir)
+        path = DatasetLoader._resolve_dataset_dir(root_dir, "covid19-fakenews")
         files = sorted(path.glob("**/*COVID-19*.csv"))
         rows = []
         for file in files:
@@ -56,10 +121,7 @@ class DatasetLoader:
                 label = "real"
             else:
                 continue
-            try:
-                df = pd.read_csv(file, encoding="utf-8", engine="python")
-            except Exception:
-                df = pd.read_csv(file, encoding="latin1", engine="python")
+            df = DatasetLoader._read_csv_file(file)
             columns = [c.lower().strip() for c in df.columns]
             df.columns = columns
             text_fields = [col for col in columns if col in {"content", "title", "abstract", "newstitle"}]
@@ -74,6 +136,134 @@ class DatasetLoader:
         if sample_size is not None and len(rows) > sample_size:
             rows = random.sample(rows, sample_size)
         return pd.DataFrame(rows)
+
+    @staticmethod
+    def load_fakenewsnet(root_dir: Path, sample_size: Optional[int] = None) -> pd.DataFrame:
+        path = DatasetLoader._resolve_dataset_dir(root_dir, "fakenewsnet")
+        rows = []
+        for dataset in ["BuzzFeed", "PolitiFact"]:
+            fake_file = path / f"{dataset}_fake_news_content.csv"
+            real_file = path / f"{dataset}_real_news_content.csv"
+            for file, label in [(fake_file, "fake"), (real_file, "real")]:
+                if not file.exists():
+                    continue
+                df = DatasetLoader._read_csv_file(file)
+                columns = [c.lower().strip() for c in df.columns]
+                df.columns = columns
+                text_fields = [col for col in columns if col in {"text", "title", "content", "headline"}]
+                if not text_fields:
+                    continue
+                for _, row in df.iterrows():
+                    parts = [str(row[col]) for col in text_fields if pd.notna(row.get(col))]
+                    text = " ".join(parts)
+                    if len(text.strip()) == 0:
+                        continue
+                    rows.append({"text": text, "label": label, "source": f"fakenewsnet-{dataset}"})
+        if sample_size is not None and len(rows) > sample_size:
+            rows = random.sample(rows, sample_size)
+        return pd.DataFrame(rows)
+
+    @staticmethod
+    def load_isotfakenews(root_dir: Path, sample_size: Optional[int] = None) -> pd.DataFrame:
+        path = DatasetLoader._resolve_dataset_dir(root_dir, "isotfakenews")
+        rows = []
+        for file, label in [(path / "Fake.csv", "fake"), (path / "True.csv", "real")]:
+            if not file.exists():
+                continue
+            df = DatasetLoader._read_csv_file(file)
+            columns = [c.lower().strip() for c in df.columns]
+            df.columns = columns
+            text_fields = [col for col in columns if col in {"text", "title", "subject"}]
+            if not text_fields:
+                continue
+            for _, row in df.iterrows():
+                parts = [str(row[col]) for col in text_fields if pd.notna(row.get(col))]
+                text = " ".join(parts)
+                if len(text.strip()) == 0:
+                    continue
+                rows.append({"text": text, "label": label, "source": "isotfakenews"})
+        if sample_size is not None and len(rows) > sample_size:
+            rows = random.sample(rows, sample_size)
+        return pd.DataFrame(rows)
+
+    @staticmethod
+    def _map_liar_label(label: str) -> Optional[str]:
+        label = str(label).strip().lower()
+        if label in {"true", "mostly-true"}:
+            return "real"
+        if label in {"half-true", "barely-true", "false", "pants-fire"}:
+            return "fake"
+        return None
+
+    @staticmethod
+    def load_liar_dataset(root_dir: Path, sample_size: Optional[int] = None) -> pd.DataFrame:
+        path = DatasetLoader._resolve_dataset_dir(root_dir, "liar-dataset")
+        rows = []
+        for file_name in ["train.tsv", "valid.tsv", "test.tsv"]:
+            file = path / file_name
+            if not file.exists():
+                continue
+            df = DatasetLoader._read_tsv_file(file)
+            columns = [c.lower().strip() for c in df.columns]
+            df.columns = columns
+            if "statement" not in columns or "label" not in columns:
+                continue
+            for _, row in df.iterrows():
+                mapped = DatasetLoader._map_liar_label(row["label"])
+                if mapped is None:
+                    continue
+                text = str(row["statement"]).strip()
+                if len(text) == 0:
+                    continue
+                rows.append({"text": text, "label": mapped, "source": "liar-dataset"})
+        if sample_size is not None and len(rows) > sample_size:
+            rows = random.sample(rows, sample_size)
+        return pd.DataFrame(rows)
+
+    @staticmethod
+    def load_generated_fakenews(root_dir: Path, sample_size: Optional[int] = None) -> pd.DataFrame:
+        path = DatasetLoader._resolve_dataset_dir(root_dir, "generated_fakenews")
+        file = path / "fake_news_dataset.csv"
+        rows = []
+        if file.exists():
+            df = DatasetLoader._read_csv_file(file)
+            columns = [c.lower().strip() for c in df.columns]
+            df.columns = columns
+            if "text" in columns and "label" in columns:
+                for _, row in df.iterrows():
+                    text = str(row["text"]).strip()
+                    label = str(row["label"]).strip().lower()
+                    if label not in {"fake", "real"}:
+                        continue
+                    if len(text) == 0:
+                        continue
+                    rows.append({"text": text, "label": label, "source": "generated_fakenews"})
+        if sample_size is not None and len(rows) > sample_size:
+            rows = random.sample(rows, sample_size)
+        return pd.DataFrame(rows)
+
+    @staticmethod
+    def load_all_datasets(root_dir: Path, sample_size: Optional[int] = None, include_generated: bool = False) -> pd.DataFrame:
+        loaders = [
+            DatasetLoader.load_covid19_fakenews,
+            DatasetLoader.load_fakenewsnet,
+            DatasetLoader.load_isotfakenews,
+            DatasetLoader.load_liar_dataset,
+        ]
+        if include_generated:
+            loaders.append(DatasetLoader.load_generated_fakenews)
+
+        combined = []
+        for loader in loaders:
+            df = loader(root_dir, sample_size=None)
+            if not df.empty:
+                combined.append(df)
+        if not combined:
+            return pd.DataFrame(columns=["text", "label", "source"])
+        result = pd.concat(combined, ignore_index=True)
+        if sample_size is not None and len(result) > sample_size:
+            result = result.sample(n=sample_size, random_state=42).reset_index(drop=True)
+        return result
 
 
 class TextCleaner:
@@ -854,16 +1044,25 @@ class PipelineAnalyzer:
 
 
 def build_text_pipeline_dataset(root_dir: Path, sample_size: Optional[int] = None) -> pd.DataFrame:
-    loader = DatasetLoader()
-    df = loader.load_covid19_fakenews(root_dir, sample_size)
+    df = DatasetLoader.load_all_datasets(root_dir, sample_size=sample_size)
     df["clean_text"] = df["text"].apply(TextCleaner.clean_text)
+    df = df[df["clean_text"].str.strip().astype(bool)].reset_index(drop=True)
+    df["label"] = df["label"].astype(str).str.strip().str.lower()
+    df = df[df["label"].isin({"fake", "real"})].reset_index(drop=True)
     return df
 
 
 if __name__ == "__main__":
-    data_dir = Path("datasets/covid19-fakenews")
-    analyzer = PipelineAnalyzer(data_dir, sample_size=500)
-    print("Loaded dataset with shape", analyzer.df.shape)
+    data_dir = Path(".")
+    combined = DatasetLoader.load_all_datasets(data_dir, sample_size=None, include_generated=False)
+    print("Detected datasets:")
+    for source, count in combined["source"].value_counts().items():
+        print(f"  {source}: {count}")
+    print("Excluded generated_fakenews by default.")
+
+    analyzer = PipelineAnalyzer(data_dir, sample_size=1000)
+    print("Loaded combined dataset with shape", analyzer.df.shape)
+    print("Label distribution:\n", analyzer.df["label"].value_counts().to_dict())
     audit = analyzer.audit_cleaning(sample_size=200)
     print("Cleaning noise audit summary:\n", audit.describe())
     print("Tokenizer comparison:\n", analyzer.compare_tokenizers(sample_size=50))
