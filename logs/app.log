@@ -1,0 +1,21 @@
+2026-05-06 01:56:43,389 | INFO | Loaded model FakeNewsLogisticRegression version=1 stage=Production weighted_f1=0.8667
+2026-05-06 01:56:43,390 | INFO | GET /health status=200 client=127.0.0.1 time_ms=0.358
+2026-05-06 01:56:43,394 | INFO | POST /preprocess status=200 client=127.0.0.1 time_ms=1.373
+2026-05-06 01:56:43,398 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=2.303
+2026-05-06 01:56:43,402 | INFO | POST /classify/batch status=200 client=127.0.0.1 time_ms=3.825
+2026-05-06 01:56:43,575 | INFO | POST /retrieve/similar status=200 client=127.0.0.1 time_ms=172.124
+2026-05-06 01:56:43,589 | INFO | GET /model/performance status=200 client=127.0.0.1 time_ms=12.248
+2026-05-06 01:56:43,591 | INFO | POST /classify status=422 client=127.0.0.1 time_ms=0.768
+2026-05-06 01:56:43,592 | INFO | POST /retrieve/similar status=422 client=127.0.0.1 time_ms=0.320
+2026-05-06 01:56:43,593 | INFO | POST /classify/batch status=422 client=127.0.0.1 time_ms=0.766
+2026-05-06 01:56:43,595 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=1.258
+2026-05-06 01:56:43,596 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.779
+2026-05-06 01:56:43,597 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.740
+2026-05-06 01:56:43,598 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.733
+2026-05-06 01:56:43,599 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.845
+2026-05-06 01:56:43,600 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.877
+2026-05-06 01:56:43,601 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.818
+2026-05-06 01:56:43,602 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.719
+2026-05-06 01:56:43,603 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.715
+2026-05-06 01:56:43,604 | INFO | POST /classify/batch status=200 client=rate-limit-test-client time_ms=0.746
+2026-05-06 01:56:43,605 | INFO | POST /classify/batch status=429 client=rate-limit-test-client time_ms=0.380
