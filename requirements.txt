@@ -17,3 +17,11 @@ tqdm==4.67.3
 typing_extensions==4.15.0
 unzip==1.0.0
 urllib3==2.6.3
+emoji==2.7.0
+regex==2024.11.2
+nltk==3.9.0
+scikit-learn==1.2.3
+gensim==4.4.0
+spacy==3.6.0
+matplotlib==3.8.0
+scipy==1.11.3
