@@ -1,0 +1,1510 @@
+{
+  "datasets": {
+    "COVID-19": {
+      "total_rows": 4986,
+      "label_distribution": {
+        "real": 4064,
+        "fake": 922
+      },
+      "unique_sources": 11,
+      "sources": [
+        "ClaimFakeCOVID-19_5.csv",
+        "ClaimFakeCOVID-19_7.csv",
+        "ClaimRealCOVID-19.csv",
+        "ClaimRealCOVID-19_5.csv",
+        "ClaimRealCOVID-19_7.csv"
+      ]
+    },
+    "FakeNewsNet": {
+      "total_rows": 422,
+      "label_distribution": {
+        "fake": 211,
+        "real": 211
+      },
+      "unique_sources": 2,
+      "sources": [
+        "fakenewsnet-BuzzFeed",
+        "fakenewsnet-PolitiFact"
+      ]
+    },
+    "ISOT": {
+      "total_rows": 44898,
+      "label_distribution": {
+        "fake": 23481,
+        "real": 21417
+      },
+      "unique_sources": 1,
+      "sources": [
+        "isotfakenews"
+      ]
+    },
+    "Liar": {
+      "total_rows": 12836,
+      "label_distribution": {
+        "fake": 8307,
+        "real": 4529
+      },
+      "unique_sources": 1,
+      "sources": [
+        "liar-dataset"
+      ]
+    },
+    "Generated": {
+      "total_rows": 216,
+      "label_distribution": {
+        "fake": 216
+      },
+      "unique_sources": 1,
+      "sources": [
+        "generated_fakenews"
+      ]
+    }
+  },
+  "analysis": {
+    "cleaning_audit": "     html_tags  urls  handles  ...  roman_urdu_terms  before_length  after_length\n0            0     0        0  ...                 0             15            15\n1            0     0        0  ...                 0             20            20\n2            0     0        0  ...                 0            145           145\n3            0     0        0  ...                 0            245           245\n4            0     0        0  ...                 0             36            36\n..         ...   ...      ...  ...               ...            ...           ...\n195          0     0        0  ...                 0            255           255\n196          0     0        0  ...                 0             42            42\n197          0     0        0  ...                 0            899           899\n198          0     0        0  ...                 0            582           582\n199          0     0        0  ...                 0             15            15\n\n[200 rows x 8 columns]",
+    "tokenizer_comparison": "   method  avg_tokens_per_doc  ...  avg_roman_terms_per_doc  seconds_total\n0    nltk              377.20  ...                      0.0       1.457222\n1   spacy              386.38  ...                      0.0       0.130962\n2  custom              391.68  ...                      0.0       0.080025\n\n[3 rows x 6 columns]",
+    "stopword_analysis": {
+      "default_removal_rate": 0.3719897162197344,
+      "custom_removal_rate": 0.3809337846047036,
+      "standard_stopwords_eval": "FeatureEvaluation(accuracy=0.89, precision=0.8977968176254589, recall=0.89, f1=0.889458345894885)",
+      "custom_stopwords_eval": "FeatureEvaluation(accuracy=0.88, precision=0.8899835796387521, recall=0.88, f1=0.8792270531400966)",
+      "custom_stopwords": [
+        "a",
+        "about",
+        "above",
+        "according",
+        "after",
+        "again",
+        "against",
+        "ain",
+        "all",
+        "also",
+        "am",
+        "an",
+        "and",
+        "any",
+        "are",
+        "aren",
+        "aren't",
+        "as",
+        "at",
+        "be",
+        "because",
+        "been",
+        "before",
+        "being",
+        "below",
+        "between",
+        "both",
+        "but",
+        "by",
+        "can",
+        "case",
+        "cases",
+        "couldn",
+        "couldn't",
+        "covid",
+        "d",
+        "did",
+        "didn't",
+        "do",
+        "does",
+        "doesn't",
+        "doing",
+        "don't",
+        "down",
+        "during",
+        "each",
+        "even",
+        "few",
+        "first",
+        "for",
+        "from",
+        "further",
+        "had",
+        "hadn",
+        "hadn't",
+        "has",
+        "hasn",
+        "hasn't",
+        "have",
+        "haven",
+        "haven't",
+        "having",
+        "he",
+        "he'd",
+        "he'll",
+        "he's",
+        "health",
+        "her",
+        "here",
+        "hers",
+        "herself",
+        "him",
+        "himself",
+        "his",
+        "how",
+        "i",
+        "i'd",
+        "i'll",
+        "i'm",
+        "i've",
+        "if",
+        "in",
+        "into",
+        "is",
+        "isn",
+        "isn't",
+        "it",
+        "it'd",
+        "it'll",
+        "it's",
+        "its",
+        "itself",
+        "just",
+        "ll",
+        "m",
+        "ma",
+        "many",
+        "me",
+        "mightn",
+        "mightn't",
+        "more",
+        "most",
+        "much",
+        "mustn",
+        "mustn't",
+        "my",
+        "myself",
+        "needn",
+        "needn't",
+        "new",
+        "now",
+        "o",
+        "of",
+        "off",
+        "on",
+        "once",
+        "one",
+        "only",
+        "or",
+        "other",
+        "our",
+        "ours",
+        "ourselves",
+        "out",
+        "over",
+        "own",
+        "people",
+        "re",
+        "reported",
+        "s",
+        "same",
+        "says",
+        "second",
+        "shan",
+        "shan't",
+        "she",
+        "she'd",
+        "she'll",
+        "she's",
+        "should",
+        "should've",
+        "shouldn't",
+        "so",
+        "some",
+        "still",
+        "study",
+        "such",
+        "t",
+        "than",
+        "that",
+        "that'll",
+        "the",
+        "their",
+        "theirs",
+        "them",
+        "themselves",
+        "then",
+        "there",
+        "these",
+        "they",
+        "they'd",
+        "they'll",
+        "they're",
+        "they've",
+        "this",
+        "those",
+        "through",
+        "to",
+        "too",
+        "two",
+        "under",
+        "until",
+        "up",
+        "vaccine",
+        "ve",
+        "very",
+        "virus",
+        "was",
+        "wasn",
+        "wasn't",
+        "we",
+        "we'd",
+        "we'll",
+        "we're",
+        "we've",
+        "were",
+        "weren",
+        "weren't",
+        "what",
+        "when",
+        "where",
+        "which",
+        "while",
+        "who",
+        "whom",
+        "why",
+        "will",
+        "with",
+        "won't",
+        "wouldn't",
+        "y",
+        "you",
+        "you'd",
+        "you'll",
+        "you're",
+        "you've",
+        "your",
+        "yours",
+        "yourself",
+        "yourselves"
+      ]
+    },
+    "stem_lemmatize_analysis": {
+      "comparison": "       method  vocabulary_size  processing_seconds\n0      porter            10073            0.807060\n1    snowball             9791            0.554599\n2  lemmatizer            12967            0.242554",
+      "sample_term_map": {
+        "vaccines": {
+          "porter": "vaccin",
+          "snowball": "vaccin",
+          "lemmatizer": "vaccine"
+        },
+        "vaccination": {
+          "porter": "vaccin",
+          "snowball": "vaccin",
+          "lemmatizer": "vaccination"
+        },
+        "misinformation": {
+          "porter": "misinform",
+          "snowball": "misinform",
+          "lemmatizer": "misinformation"
+        },
+        "misinformed": {
+          "porter": "misinform",
+          "snowball": "misinform",
+          "lemmatizer": "misinformed"
+        },
+        "reported": {
+          "porter": "report",
+          "snowball": "report",
+          "lemmatizer": "reported"
+        },
+        "reports": {
+          "porter": "report",
+          "snowball": "report",
+          "lemmatizer": "report"
+        },
+        "studies": {
+          "porter": "studi",
+          "snowball": "studi",
+          "lemmatizer": "study"
+        },
+        "study": {
+          "porter": "studi",
+          "snowball": "studi",
+          "lemmatizer": "study"
+        },
+        "pandemic": {
+          "porter": "pandem",
+          "snowball": "pandem",
+          "lemmatizer": "pandemic"
+        },
+        "pandemics": {
+          "porter": "pandem",
+          "snowball": "pandem",
+          "lemmatizer": "pandemic"
+        },
+        "doctors": {
+          "porter": "doctor",
+          "snowball": "doctor",
+          "lemmatizer": "doctor"
+        },
+        "doctor": {
+          "porter": "doctor",
+          "snowball": "doctor",
+          "lemmatizer": "doctor"
+        },
+        "doesn't": {
+          "porter": "doesn't",
+          "snowball": "doesn't",
+          "lemmatizer": "doesn't"
+        },
+        "couldn't": {
+          "porter": "couldn't",
+          "snowball": "couldn't",
+          "lemmatizer": "couldn't"
+        },
+        "allegedly": {
+          "porter": "allegedli",
+          "snowball": "alleg",
+          "lemmatizer": "allegedly"
+        },
+        "falsehood": {
+          "porter": "falsehood",
+          "snowball": "falsehood",
+          "lemmatizer": "falsehood"
+        },
+        "falsehoods": {
+          "porter": "falsehood",
+          "snowball": "falsehood",
+          "lemmatizer": "falsehood"
+        },
+        "coronavirus": {
+          "porter": "coronaviru",
+          "snowball": "coronavirus",
+          "lemmatizer": "coronavirus"
+        },
+        "covid": {
+          "porter": "covid",
+          "snowball": "covid",
+          "lemmatizer": "covid"
+        },
+        "symptoms": {
+          "porter": "symptom",
+          "snowball": "symptom",
+          "lemmatizer": "symptom"
+        }
+      },
+      "collision_counts": {
+        "porter": 174295,
+        "snowball": 174577,
+        "lemmatizer": 171401
+      }
+    },
+    "feature_analysis": {
+      "bow": {
+        "shape": [
+          500,
+          14430
+        ],
+        "sparsity": 0.98817227997228,
+        "top_terms": {
+          "fake": [
+            [
+              "the",
+              4569.0
+            ],
+            [
+              "to",
+              2462.0
+            ],
+            [
+              "of",
+              1934.0
+            ],
+            [
+              "a",
+              1882.0
+            ],
+            [
+              "and",
+              1838.0
+            ],
+            [
+              "in",
+              1600.0
+            ],
+            [
+              "that",
+              1206.0
+            ],
+            [
+              "s",
+              1166.0
+            ],
+            [
+              "is",
+              870.0
+            ],
+            [
+              "for",
+              762.0
+            ],
+            [
+              "on",
+              739.0
+            ],
+            [
+              "he",
+              686.0
+            ],
+            [
+              "it",
+              683.0
+            ],
+            [
+              "trump",
+              677.0
+            ],
+            [
+              "was",
+              647.0
+            ],
+            [
+              "with",
+              570.0
+            ],
+            [
+              "his",
+              536.0
+            ],
+            [
+              "this",
+              439.0
+            ],
+            [
+              "as",
+              438.0
+            ],
+            [
+              "they",
+              436.0
+            ],
+            [
+              "i",
+              432.0
+            ],
+            [
+              "by",
+              403.0
+            ],
+            [
+              "not",
+              389.0
+            ],
+            [
+              "have",
+              385.0
+            ],
+            [
+              "be",
+              382.0
+            ],
+            [
+              "at",
+              367.0
+            ],
+            [
+              "are",
+              358.0
+            ],
+            [
+              "from",
+              358.0
+            ],
+            [
+              "who",
+              355.0
+            ],
+            [
+              "has",
+              342.0
+            ]
+          ],
+          "real": [
+            [
+              "the",
+              4292.0
+            ],
+            [
+              "to",
+              2288.0
+            ],
+            [
+              "of",
+              1953.0
+            ],
+            [
+              "a",
+              1835.0
+            ],
+            [
+              "and",
+              1682.0
+            ],
+            [
+              "in",
+              1605.0
+            ],
+            [
+              "on",
+              917.0
+            ],
+            [
+              "said",
+              790.0
+            ],
+            [
+              "s",
+              782.0
+            ],
+            [
+              "that",
+              744.0
+            ],
+            [
+              "for",
+              706.0
+            ],
+            [
+              "with",
+              524.0
+            ],
+            [
+              "he",
+              493.0
+            ],
+            [
+              "is",
+              488.0
+            ],
+            [
+              "trump",
+              462.0
+            ],
+            [
+              "as",
+              459.0
+            ],
+            [
+              "u",
+              413.0
+            ],
+            [
+              "by",
+              413.0
+            ],
+            [
+              "has",
+              406.0
+            ],
+            [
+              "was",
+              405.0
+            ],
+            [
+              "be",
+              360.0
+            ],
+            [
+              "from",
+              358.0
+            ],
+            [
+              "it",
+              358.0
+            ],
+            [
+              "have",
+              352.0
+            ],
+            [
+              "his",
+              344.0
+            ],
+            [
+              "at",
+              324.0
+            ],
+            [
+              "not",
+              295.0
+            ],
+            [
+              "an",
+              287.0
+            ],
+            [
+              "would",
+              261.0
+            ],
+            [
+              "who",
+              248.0
+            ]
+          ]
+        }
+      },
+      "tfidf": {
+        "standard_top_terms": {
+          "fake": [
+            [
+              "the",
+              0.15279686369361703
+            ],
+            [
+              "to",
+              0.08676822707456856
+            ],
+            [
+              "a",
+              0.07096700885725363
+            ],
+            [
+              "of",
+              0.06994457770537385
+            ],
+            [
+              "and",
+              0.06702002731986019
+            ],
+            [
+              "in",
+              0.059568330177732144
+            ],
+            [
+              "that",
+              0.048941174242577996
+            ],
+            [
+              "s",
+              0.04668166676612329
+            ],
+            [
+              "trump",
+              0.04544008790674775
+            ],
+            [
+              "is",
+              0.03791636132173631
+            ],
+            [
+              "for",
+              0.034097215032817554
+            ],
+            [
+              "it",
+              0.03335278729426929
+            ],
+            [
+              "he",
+              0.03304815375710003
+            ],
+            [
+              "on",
+              0.030606432978773475
+            ],
+            [
+              "was",
+              0.02829231046061122
+            ]
+          ],
+          "real": [
+            [
+              "the",
+              0.17029228191113172
+            ],
+            [
+              "to",
+              0.09624615740687197
+            ],
+            [
+              "of",
+              0.08250813981501702
+            ],
+            [
+              "a",
+              0.07404527962372115
+            ],
+            [
+              "and",
+              0.07291451467036597
+            ],
+            [
+              "in",
+              0.06896753270315722
+            ],
+            [
+              "on",
+              0.044448690994491884
+            ],
+            [
+              "said",
+              0.0441719900657724
+            ],
+            [
+              "s",
+              0.03656476314128552
+            ],
+            [
+              "that",
+              0.03472749622313264
+            ],
+            [
+              "for",
+              0.03355735913324588
+            ],
+            [
+              "u",
+              0.03210677151121584
+            ],
+            [
+              "trump",
+              0.031290788761183186
+            ],
+            [
+              "he",
+              0.02790401454351249
+            ],
+            [
+              "with",
+              0.026864970233847648
+            ]
+          ]
+        },
+        "smooth_top_terms": {
+          "fake": [
+            [
+              "the",
+              0.15771503108847904
+            ],
+            [
+              "to",
+              0.0895218117755001
+            ],
+            [
+              "a",
+              0.07328354296315666
+            ],
+            [
+              "of",
+              0.07219573449680512
+            ],
+            [
+              "and",
+              0.06921465956131186
+            ],
+            [
+              "in",
+              0.06148301021550653
+            ],
+            [
+              "that",
+              0.050462456702864984
+            ],
+            [
+              "s",
+              0.04818223016947994
+            ],
+            [
+              "trump",
+              0.04678047823898784
+            ],
+            [
+              "is",
+              0.03911221721306479
+            ],
+            [
+              "for",
+              0.0352013853765958
+            ],
+            [
+              "it",
+              0.03435860317069918
+            ],
+            [
+              "he",
+              0.034089593280523224
+            ],
+            [
+              "on",
+              0.03163892762576327
+            ],
+            [
+              "was",
+              0.029205179128591222
+            ]
+          ],
+          "real": [
+            [
+              "the",
+              0.17556408981834926
+            ],
+            [
+              "to",
+              0.09920209760783663
+            ],
+            [
+              "of",
+              0.0850849409178353
+            ],
+            [
+              "a",
+              0.07633114020147087
+            ],
+            [
+              "and",
+              0.07517537316526886
+            ],
+            [
+              "in",
+              0.07109710130666927
+            ],
+            [
+              "on",
+              0.04577676196205113
+            ],
+            [
+              "said",
+              0.04548798490545003
+            ],
+            [
+              "s",
+              0.03770905272209855
+            ],
+            [
+              "that",
+              0.03574152435784119
+            ],
+            [
+              "for",
+              0.034614264901985756
+            ],
+            [
+              "u",
+              0.03297958590618073
+            ],
+            [
+              "trump",
+              0.03207646071594607
+            ],
+            [
+              "he",
+              0.028730837523229975
+            ],
+            [
+              "with",
+              0.027699507557784175
+            ]
+          ]
+        },
+        "sublinear_top_terms": {
+          "fake": [
+            [
+              "the",
+              0.05142503199355003
+            ],
+            [
+              "to",
+              0.04052676117067337
+            ],
+            [
+              "a",
+              0.039703000971193184
+            ],
+            [
+              "of",
+              0.03675392650938842
+            ],
+            [
+              "in",
+              0.036715888598191644
+            ],
+            [
+              "and",
+              0.03655607081017083
+            ],
+            [
+              "that",
+              0.03166910640837402
+            ],
+            [
+              "s",
+              0.030619096906265596
+            ],
+            [
+              "is",
+              0.02863829321725784
+            ],
+            [
+              "trump",
+              0.028590655441553633
+            ],
+            [
+              "for",
+              0.028569336669739542
+            ],
+            [
+              "it",
+              0.027474946320305345
+            ],
+            [
+              "on",
+              0.026294387290363267
+            ],
+            [
+              "he",
+              0.023984183442705625
+            ],
+            [
+              "was",
+              0.02330246267398334
+            ]
+          ],
+          "real": [
+            [
+              "the",
+              0.056840554886280245
+            ],
+            [
+              "to",
+              0.04738070039254687
+            ],
+            [
+              "of",
+              0.043617137270253445
+            ],
+            [
+              "in",
+              0.04143152500317826
+            ],
+            [
+              "and",
+              0.04056597576775715
+            ],
+            [
+              "a",
+              0.0391127295319078
+            ],
+            [
+              "said",
+              0.03371080693204163
+            ],
+            [
+              "on",
+              0.03341474245172562
+            ],
+            [
+              "for",
+              0.028160572102254252
+            ],
+            [
+              "s",
+              0.027082622028685426
+            ],
+            [
+              "u",
+              0.02687232576710732
+            ],
+            [
+              "that",
+              0.026702954804592244
+            ],
+            [
+              "reuters",
+              0.02644074507569423
+            ],
+            [
+              "with",
+              0.024486626509008846
+            ],
+            [
+              "is",
+              0.023804751991315102
+            ]
+          ]
+        },
+        "retrieval": {
+          "sarah palin's son breaks into family home\u2026savagely beats dad\u2026leaves him covered in blood the eldest son of ex-alaska gov. sarah palin beat the daylights out of his own father after he broke into his parents home in a drunken rage, according to documents released by local police.track palin, 28, was busted saturday and charged with first-degree burglary, fourth-degree assault and criminal mischief, and remains in custody.a court document said that the younger palin wanted to visit the home to retrieve a truck.but his father, todd palin, told him to stay away because track palin was drunk and on pain medication, according to a police affidavit and charging documents obtained by the los angeles times. track told him he was [going to] come anyway to beat his ass, according to an affidavit filed by wasilla police officer adam lapointe.todd palin answered the door armed with a pistol when his son arrived, but track broke a window to get into the house and then started savagely beating him, cops said.the younger palin threw his dad to the ground and hit him repeatedly on the head, leaving him covered in blood and with a liquid oozing from his ear, the documents said.sarah palin, the 2008 republican vice presidential nominee, called police at 8:30 p.m. and said her son was freaking out and was on some type of medication. when cops arrived, they saw the parents fleeing the house in separate vehicles, todd palin with blood running down his face and sarah palin looking visibly upset, the paper reported.police confronted track palin, who called them peasants, and told them to lay down their weapons, according to the documents. eventually, palin left the house and was handcuffed.he told cops that had told his father to shoot him several times, according to the documents. nyp left-news": [
+            [
+              231,
+              1.0000000000000002
+            ],
+            [
+              43,
+              0.33592303410045626
+            ],
+            [
+              204,
+              0.20578564457346166
+            ],
+            [
+              380,
+              0.20397184096499227
+            ],
+            [
+              133,
+              0.19988184153525426
+            ]
+          ],
+          "trump to nominate rod rosenstein to be deputy u.s. attorney general washington (reuters) - u.s. president donald trump will nominate u.s. attorney rod rosenstein to be deputy attorney general, the white house said on tuesday, one day after trump fired the acting attorney general for refusing to enforce an immigration order. the white house also said trump will nominate rachel brand to be associate attorney general and steven engel to be an assistant attorney general, filling senior positions as the justice department awaits senate confirmation of jeff sessions to be attorney general. politicsnews": [
+            [
+              312,
+              1.0
+            ],
+            [
+              374,
+              0.24307369621540503
+            ],
+            [
+              176,
+              0.19239998185938484
+            ],
+            [
+              300,
+              0.18208705361352112
+            ],
+            [
+              438,
+              0.16605606948490634
+            ]
+          ],
+          "supreme court fight gives democrats fuel to regain u.s. senate control washington (reuters) - a supreme court nomination battle that was ignited on saturday with the death of justice antonin scalia has given democrats an explosive new issue that could bolster their chances of regaining majority control of the u.s. senate. the impact could be felt most acutely in 'swing' states, where republicans are trying to hold onto senate seats, political strategists and analysts said. the high stakes are also expected to prompt greater voter turnout that could favor democrats.also on reuters trump is a ------: white house hopeful plays fill-in-the-blanks with voters not in my backyard? mainstream scandinavia warily eyes record immigration with no clear idea of who president barack obama will nominate as scalia's replacement, it was way too early to know exactly how this fight will play out in already rollicking presidential and congressional elections. but, 'in this hyper-polarized political environment we are currently operating in, i can only assume the battle over this (court) nominee will dominate the political debate from here on out,' said jim manley, a strategist and former top aide to democratic senators. manley noted republicans are facing tough races for senate seats in swing states such as ohio, florida, new hampshire, wisconsin and pennsylvania and could find themselves in even tighter spots because of the divisive fight over scalia's replacement. these republican candidates, who either already serve in the senate or are vying for open seats, have to especially thread the needle in their politically divided states on social issues, like abortion rights, that so dominate supreme court confirmation fights. democrats already enjoyed an advantage in the november senate elections, having to defend only 10 seats while 24 republican seats are up for grabs in the 100-member chamber. democrats need a net gain of five seats to win back the majority they lost in the 2014 elections. just hours after scalia's death at the age of 79, senate majority leader mitch mcconnell proclaimed that whoever moves into the white house on jan. 20, 2017 - and not obama - should pick the replacement for the late conservative jurist. the senate must confirm presidential nominees to the life-time appointments at the nine-justice high court, whose recent decisions have had a deep impact on the country, from the legalization of same-sex marriage to election campaign finance. 'if the republican leadership refuses to even hold a hearing, i think that is going to guarantee they lose control of the senate, because i don't think the american people will stand for that,' proclaimed democratic senator patrick leahy, who was interviewed on cnn's 'state of the union' on sunday. meanwhile, mcconnell's announcement sparked new fundraising pleas in the presidential and congressional campaigns, which already were awash in campaign contributions. ron bonjean, a former top republican senate leadership aide and current political strategist, acknowledged that republican senate candidates from swing states 'may be placed in an awkward position' by the supreme court fight. while some may be pressured to join democrats in calling for a confirmation vote depending on who obama nominates, bonjean also saw a potential upside for those republicans. with anti-establishment candidates like donald trump and bernie sanders far exceeding expectations in their quest for the presidency, republican senate candidates in swing states could feel emboldened to break from party ranks. senator mark kirk in illinois, for example, is one of those republicans in a swing state facing a potentially rough race. the 2016 campaigns already were generating an avalanche of voter interest with control of the white house and congress hanging in the balance. now, with the ideological control of the supreme court also to be decided, 'that leads to only one conclusion: increased turnout' of voters in november, said larry sabato, a university of virginia political scientist. higher turnout often helps democratic presidential candidates, which in turn could help democratic senate candidates. however, sabato also noted that with the supreme court vacancy ascending in importance, it could rally establishment republicans who currently oppose the anti-establishment trump to support him if he becomes the party's nominee. and that, in turn, could boost republican turnout in tight senate races. politicsnews": [
+            [
+              350,
+              0.999999999999998
+            ],
+            [
+              54,
+              0.36351827278163246
+            ],
+            [
+              490,
+              0.35040488428353356
+            ],
+            [
+              487,
+              0.33224422384815977
+            ],
+            [
+              30,
+              0.3303359524355103
+            ]
+          ],
+          "russia drops bombshell, confirms it's been talking to trump throughout campaign (details) for the entirety of donald trump s presidential campaign, there was a massive amount of suspicion surrounding the reality television star s relationship with russian president vladimir putin. it turns out that just two days after trump has gotten elected to be the next president of the united states, most of our instincts were correct.on thursday, russian deputy foreign minister sergei ryabkov confirmed that there were contacts between the trump campaign the russian embassy staff throughout this election. he said: obviously, we know most of the people from his entourage. those people have always been in the limelight in the united states and have occupied high-ranking positions. i cannot say that all of them but quite a few have been staying in touch with russian representatives. this news comes after we d already seen various instances where trump embraced and praised putin during his campaign, giving the impression that these two might actually be best friends. trump had also said he would improve america s relations with russia, and told nato allies they ll need to pay tribute to the united states if they want to continue to have protection against possible russian aggression. trump s relationship with russia concerned intelligence and foreign policy experts alike and it should concern all of us as well. trump has lied about his relationship with russia much like he has lied about everything else in his presidential campaign. trump repeatedly told americans that he had not been interacting with the kremlin even in the face of evidence that he was praising putin. once again, ryabkov contradicted trump s previous denial when he said: we have just begun to consider ways of building dialogue with the future donald trump administration and channels we will be using for those purposes. it s also useful to point out that trump s former campaign chairman paul manafort resigned from the campaign after the new york times reported that ledgers discovered in ukraine found that millions of dollars had been earmarked for trump from the pro-russian political party of former ukrainian president viktor yanukovych. if that isn t shady, i don t know what is.now that the election is over, trump s lies are being exposed one by one. his followers are going to be devastated when they find out who they really elected.featured image via adam berry and mark wilson / getty images news": [
+            [
+              368,
+              1.0000000000000007
+            ],
+            [
+              244,
+              0.38387815349981863
+            ],
+            [
+              17,
+              0.3716976801172182
+            ],
+            [
+              54,
+              0.3667366576155738
+            ],
+            [
+              71,
+              0.35551702894944953
+            ]
+          ],
+          "our economy (in louisiana) has grown 50 percent faster than the national gdp, even since the national recession.": [
+            [
+              268,
+              1.0
+            ],
+            [
+              344,
+              0.18382632542247843
+            ],
+            [
+              404,
+              0.1808996488399839
+            ],
+            [
+              265,
+              0.14741703267369524
+            ],
+            [
+              102,
+              0.14150637476211522
+            ]
+          ],
+          "here's the third turncoat democrat who needs to be primaried over scotus in 2018 (details) another day, another democrat who is backing the nominee for the supreme court seat that the senate republicans stole from president obama. we have previously reported on how traitorous democrats like joe manchin (dino-wv) and heidi heitcamp (dino-nd) have turned tail and voted with republicans on many issues most notably falling in line with republicans in order to confirm right-wing potential supreme court justice neil gorsuch. now, we have a third to add to that list: joe donnelly of indiana. donnelly said of his decision to be a traitor to his party on this issue: after meeting with judge gorsuch, conducting a thorough review of his record, and closely following his hearing before the senate judiciary committee, i believe that he is a qualified jurist who will base his decisions on his understanding of the law and is well-respected among his peers. the only redeeming statement donnelly has made is his expressing his opinion that the senate should still have a 60-vote threshold when it comes to confirming gorsuch or any other nominee for the supreme court. that is paramount, because it means that there is a true bipartisan senate consensus for the court s nominations and confirmations, which is a rule set by the founders to make sure that one party and its views do not dominate the judiciary.of course, senate majority leader mitch mcconnell cares not one whit about that; he and his fellow gop cronies have insisted that gorsuch will be on the court one way or another. this means he is willing to breach the 60-vote rule to make sure gorsuch makes it to the supreme court. what the republicans did to president obama s nominee merrick garland is a travesty and a disgrace, and the democrats should do the same for gorsuch. for those who won t primary them. we have no time for dinos in these troubled times. oppose trump at every turn, or the good folks at we will replace you will have you heads, as they should.featured image via alex wong/getty images news": [
+            [
+              490,
+              0.9999999999999987
+            ],
+            [
+              350,
+              0.3504048842835337
+            ],
+            [
+              33,
+              0.29946625856678705
+            ],
+            [
+              339,
+              0.2848722193558392
+            ],
+            [
+              54,
+              0.28448747136575214
+            ]
+          ],
+          "'christians' create grisly haunted house claiming pulse nightclub victims got what they deserved chicago doesn t tend to be one of the cities one thinks of when one thinks of the religious right. unfortunately, they do exist here, and some of them decided to do something unspeakably disgusting and cruel for halloween. calling themselves christians, which they aren t, they put together a haunted house with 10 rooms one of which showed the mass shooting at the pulse nightclub in orlando.pulse was a club frequented by the lgbtq community, and there are many on the religious right who seem to think that the victims of that horror simply got what was coming to them. the so-called christians who put this atrocity together called it, the room: a journey to hell. what s the implication there? it s pretty clear. in each of the 10 rooms were scenes in which people supposedly made choices that would send them to hell. the inclusion of the pulse shooting indicates that the group who put this together believes that the clubgoers who were brutally murdered that night went to hell due to their choice of living the homosexual lifestyle. ergo, getting murdered was what they deserved for willfully committing that sin.the haunted house was to happen at fernwood elementary school, which is part of chicago public schools. an elementary school is not an appropriate venue for anything like this, even though children under 13 were supposedly prohibited from going through it. cps very wisely decided not to allow the haunted house at all, according to the windy city times, and a spokesperson for cps said: the event organizers mischaracterized the true content of the event, and we did not approve any association with the activities the organizers have now advertised. the event will not be held on cps property. because of course they did.the event organizers posted an ad on facebook asking for volunteers for the event, and the event has now been banned there, too, as well it should be. this is christian extremism run amok, and there is no place for this kind of gruesome hatred in our society.featured image by gerardo mora via getty images news": [
+            [
+              277,
+              0.9999999999999991
+            ],
+            [
+              292,
+              0.3027122590365628
+            ],
+            [
+              339,
+              0.2676384871770794
+            ],
+            [
+              466,
+              0.2675620465800971
+            ],
+            [
+              39,
+              0.2545910947877844
+            ]
+          ],
+          "gingrich supported individual health insurance mandates.": [
+            [
+              154,
+              1.0000000000000002
+            ],
+            [
+              124,
+              0.23063108702202367
+            ],
+            [
+              108,
+              0.21403408474334953
+            ],
+            [
+              467,
+              0.11086256287666027
+            ],
+            [
+              145,
+              0.10836542527156742
+            ]
+          ],
+          "nitric oxide may be an effective treatment for covid-19 \"nitric oxide may be an effective treatment for covid-19\" new research has suggested that inhalation of nitric oxide may be way to reduce effects of covid-19. new review of scientific literature indicates that inhaled nitric oxide may treat some severe effects of covid-19 some of which can be fatal. research appearing in journal nitric oxide paves way for future research to see whether theory stands up to practice. stay informed with live updates on current covid-19 outbreak and visit our coronavirus hub for more advi. new review has explored available evidence and it proposes that inhaled nitric oxide may help treat severe symptoms of covid-19 .": [
+            [
+              432,
+              0.9999999999999999
+            ],
+            [
+              369,
+              0.2783929846307517
+            ],
+            [
+              66,
+              0.2269102673990846
+            ],
+            [
+              431,
+              0.22116875430631788
+            ],
+            [
+              158,
+              0.21851202959875912
+            ]
+          ],
+          "joe biden's son beau dies at age 46 beau biden son of vice president joe biden died of brain cancer at 46, the white house confirmed in a statement saturday. it is with broken hearts that hallie, hunter, ashley, jill and i announce the passing of our husband, brother and son, beau, after he battled brain cancer with the same integrity, courage and strength he demonstrated every day of his life, the statement from vice president biden s office said. the entire biden family is saddened beyond words. we know that beau s spirit will live on in all of us-especially through his brave wife, hallie, and two remarkable children, natalie and hunter, the statement said.president obama said he and the first lady were grieving alongside the biden family. michelle and i humbly pray for the good lord to watch over beau biden, and to protect and comfort his family here on earth, obama said in a statement released late saturday.beau biden was a lawyer and member of the delaware national guard and former delaware attorney general. however, he never would follow in his father s footsteps as a u.s. senator.biden, although planning to run for governor of delaware in 2016, was plagued with health troubles throughout his political career.in 2010, biden suffered a mild stroke at only 41 years old. three years later, he found himself in a texas hospital for cancer treatment.in august 2013, he would undergo surgery at md anderson cancer center at the university of texas in houston to remove a lesion. that was followed by radiation treatment and chemotherapy. three months after the procedure, doctors gave him a clean bill of health.however, biden suffered a recurrence and was admitted to walter reed hospital in may, officials said. at that time though, it was unaware why he was being treated.support for the biden family poured in from both sides of the aisle saturday night into sunday morning.democratic presidential contenders hillary clinton and martin o malley both expressed their sympathies to the bidens. my heart is broken for the family of beau biden a wonderful man who served his country with devotion and lived his life with courage, hillary tweeted. katie and i are deeply saddened by the news of the passing of beau biden. he served his country and the people of delaware with great honor, o malley said in a statement. our thoughts and prayers go out to the entire biden family in this moment of great loss. senator james langford (r-ok) also released a statement expressing his remorse. i m incredibly saddened to hear of the death of vice president joe biden s son, beau biden, the statement said. our entire nation mourns with the biden family and the white house during this difficult time. vice president biden has endured incredible tragedies during his lifetime. cindy and i pray for the biden family, beau s widow, natalie, and their two children. the news of beau biden s death also caught the delaware political establishment off guard and also renewed questions about his health. beau biden kept a low profile and declined any interviews abou his health. i think he would have run. i think he would have won, said delaware gov. jack markell, a fellow democrat. markell said he last spoke to biden in february, when he invited him to a meeting of democratic governors in washington, d.c. he was serious about running for governor, added new castle county executive tom gordon, a longtime friend and political ally of joe biden who described beau biden as the most popular politician in delaware. he thought he was going to win this battle. gordon said he last spoke to beau several weeks ago, when biden participated in a conference call on crime issues in wilmington. he was a rock star, gordon said. he had a great image, great character. beau biden left office earlier this year and joined a delaware law firm run by stuart grant, a prominent democratic campaign donor and plaintiffs lawyer specializing in corporate litigation. the first announced in late april that biden was expanding his work on behalf of whistleblower clients, but was not available to clients.biden, a university of pennsylvania graduate, earned a law degree from syracuse university in 1994. he served as a law clerk for a federal judge in new hampshire before working for the u.s. department of justice from 1995 until 2002, including five years as a federal prosecutor in philadelphia. in 2001, he volunteered for an interim assignment helping to train judges and prosecutors in postwar kosovo.with his father, then delaware s senior u.s. senator, at his side in 2006, biden launched his campaign for attorney general. he promised to reorganize the state department of justice to better combat identity theft, internet stalking by pedophiles, street crime and abuse of the elderly.biden won with 52.6 percent of the vote. he s supped at this table since he s been 3 years old, a beaming joe biden said after the victory. beau biden was a toddler when his father was first elected to the senate. i m just proud of him, the elder biden added. i think he will make the state proud. the young biden sidestepped questions about his own political ambitions during the campaign. sometimes, it s not good to look too far down the road, said biden, who remained similarly cautious about discussing his long-range plans in an interview with the associated press after suffering the stroke in 2010. having long-term dreams is a good thing but having a plan has never worked for me, because life always intervenes, biden told the ap at the time. for biden, his initial health scare was also a reminder to balance his job with family time advice he encouraged others to follow. it s kind of reinforced how i ve operated my life, he said.as attorney general, biden established a child predator unit, joined other attorneys general in taking on mortgage lenders over foreclosure abuses, proposed tougher bail restrictions for criminal defendants, putting him at odds with some fellow dems.but a spate of shootings in biden s hometown of wilmington went largely unabated during his tenure, and his office stumbled in some high-profile murder prosecutions, including two cases in which murder charges were dropped. biden also faced scrutiny over how his office handled the case of earl bradley, a pediatrician who sexually assaulted scores of young patients over more than a decade before being arrested in december 2009.biden cited his focus on the bradley case in announcing in january 2010 that he would not run for the senate seat that his father vacated in 2008 when he was elected vice president.the younger biden s decision stunned political observers, including many fellow democrats who thought joe biden s former chief of staff, ted kaufman, had been appointed to the senate on an interim basis to keep the seat warm for the son. a fellow democrat, new castle county executive chris coons, won the seat after castle, who had been considered the odds-on favorite, was upset by tea party-backed christine o donnell in the gop primary. i have no regrets, biden said after o donnell s stunning primary victory scrambled the political calculus surrounding the senate seat.biden coasted to re-election as attorney general in 2010 after republicans declined to field a candidate against him.in addition to his work as a lawyer and attorney general, biden was a major in an army national guard unit that deployed to iraq in 2008.he was married and the father of two children.markell ordered flags to be flown at half-staff in delaware in honor of biden.via: fox news government news": [
+            [
+              185,
+              1.0000000000000007
+            ],
+            [
+              486,
+              0.23790574316402952
+            ],
+            [
+              54,
+              0.23489530049739085
+            ],
+            [
+              170,
+              0.2347575600256833
+            ],
+            [
+              33,
+              0.23176959877358821
+            ]
+          ]
+        }
+      },
+      "word2vec": {
+        "cbow": {
+          "similarities": {
+            "covid:virus": 0.8191058039665222,
+            "vaccine:health": null,
+            "fake:real": 0.8294471502304077,
+            "reported:study": 0.8968122005462646,
+            "pandemic:lockdown": null
+          },
+          "neighbors": {
+            "covid": [
+              [
+                "19",
+                0.9881033301353455
+              ],
+              [
+                "semitic",
+                0.9523578882217407
+              ],
+              [
+                "pandemic",
+                0.8990972638130188
+              ],
+              [
+                "symptoms",
+                0.8989874124526978
+              ],
+              [
+                "generation",
+                0.8835728168487549
+              ]
+            ],
+            "vaccine": [],
+            "fake": [
+              [
+                "pundit",
+                0.9804229736328125
+              ],
+              [
+                "below",
+                0.9763607382774353
+              ],
+              [
+                "hunt",
+                0.9692345261573792
+              ],
+              [
+                "cbs",
+                0.9690788388252258
+              ],
+              [
+                "politics",
+                0.9680226445198059
+              ]
+            ],
+            "real": [
+              [
+                "track",
+                0.9938278794288635
+              ],
+              [
+                "hate",
+                0.9934009909629822
+              ],
+              [
+                "crime",
+                0.9921301603317261
+              ],
+              [
+                "figure",
+                0.9917706847190857
+              ],
+              [
+                "getting",
+                0.9913932085037231
+              ]
+            ],
+            "virus": [
+              [
+                "per",
+                0.992484986782074
+              ],
+              [
+                "tests",
+                0.9919147491455078
+              ],
+              [
+                "gaza",
+                0.9915938377380371
+              ],
+              [
+                "35",
+                0.9912794232368469
+              ],
+              [
+                "five",
+                0.9909449219703674
+              ]
+            ],
+            "health": [
+              [
+                "waiting",
+                0.9935409426689148
+              ],
+              [
+                "pizza",
+                0.993506669998169
+              ],
+              [
+                "accepting",
+                0.9925796985626221
+              ],
+              [
+                "through",
+                0.992324709892273
+              ],
+              [
+                "groups",
+                0.9911815524101257
+              ]
+            ]
+          }
+        },
+        "skipgram": {
+          "similarities": {
+            "covid:virus": 0.8561732769012451,
+            "vaccine:health": null,
+            "fake:real": 0.6557539105415344,
+            "reported:study": 0.48005688190460205,
+            "pandemic:lockdown": null
+          },
+          "neighbors": {
+            "covid": [
+              [
+                "19",
+                0.9745475053787231
+              ],
+              [
+                "pandemic",
+                0.8965674638748169
+              ],
+              [
+                "disease",
+                0.8894294500350952
+              ],
+              [
+                "spread",
+                0.8850286602973938
+              ],
+              [
+                "symptoms",
+                0.8758982419967651
+              ]
+            ],
+            "vaccine": [],
+            "fake": [
+              [
+                "embarrassing",
+                0.8878049254417419
+              ],
+              [
+                "lemon",
+                0.8824065923690796
+              ],
+              [
+                "story",
+                0.8746981620788574
+              ],
+              [
+                "cnn",
+                0.8702185153961182
+              ],
+              [
+                "lie",
+                0.8696565628051758
+              ]
+            ],
+            "real": [
+              [
+                "estate",
+                0.8725007772445679
+              ],
+              [
+                "neither",
+                0.8110765218734741
+              ],
+              [
+                "big",
+                0.8080717325210571
+              ],
+              [
+                "little",
+                0.7913041710853577
+              ],
+              [
+                "obviously",
+                0.7737874388694763
+              ]
+            ],
+            "virus": [
+              [
+                "sars",
+                0.954241931438446
+              ],
+              [
+                "cov",
+                0.9498858451843262
+              ],
+              [
+                "disease",
+                0.9470431208610535
+              ],
+              [
+                "spread",
+                0.925344705581665
+              ],
+              [
+                "severe",
+                0.925020694732666
+              ]
+            ],
+            "health": [
+              [
+                "insurance",
+                0.8126680850982666
+              ],
+              [
+                "care",
+                0.8098134398460388
+              ],
+              [
+                "groups",
+                0.7913727760314941
+              ],
+              [
+                "religious",
+                0.7376869320869446
+              ],
+              [
+                "torture",
+                0.7216681241989136
+              ]
+            ]
+          }
+        }
+      },
+      "classification": {
+        "tfidf_vs_word2vec_cbow": {
+          "tfidf_only": "FeatureEvaluation(accuracy=0.89, precision=0.8977968176254589, recall=0.89, f1=0.889458345894885)",
+          "word2vec_only": "FeatureEvaluation(accuracy=0.77, precision=0.770108043217287, recall=0.77, f1=0.76997699769977)",
+          "concatenated": "FeatureEvaluation(accuracy=0.78, precision=0.780448717948718, recall=0.78, f1=0.7799119647859143)"
+        },
+        "tfidf_vs_word2vec_skipgram": {
+          "tfidf_only": "FeatureEvaluation(accuracy=0.89, precision=0.8977968176254589, recall=0.89, f1=0.889458345894885)",
+          "word2vec_only": "FeatureEvaluation(accuracy=0.81, precision=0.8131313131313133, recall=0.81, f1=0.8095238095238095)",
+          "concatenated": "FeatureEvaluation(accuracy=0.83, precision=0.8311922922521076, recall=0.83, f1=0.8298468621759583)"
+        }
+      }
+    }
+  }
+}
