@@ -62,6 +62,14 @@ DEFAULT_SAMPLE_SIZE = 1500
 RANDOM_STATE = 42
 
 
+def safe_float(value: Any, default: float = 0.0) -> float:
+    try:
+        numeric = float(value)
+    except (TypeError, ValueError):
+        return default
+    return numeric if math.isfinite(numeric) else default
+
+
 @dataclass
 class PreprocessingConfig:
     name: str
@@ -971,13 +979,13 @@ def ensure_serving_logistic_model(
         "model_version": str(target.version),
         "stage": target.current_stage or "None",
         "run_id": target.run_id,
-        "weighted_f1": float(
+        "weighted_f1": safe_float(
             target.tags.get("weighted_f1", run.data.metrics.get("weighted_f1", 0.0))
         ),
-        "accuracy": float(
+        "accuracy": safe_float(
             target.tags.get("accuracy", run.data.metrics.get("accuracy", 0.0))
         ),
-        "roc_auc": float(
+        "roc_auc": safe_float(
             target.tags.get("roc_auc", run.data.metrics.get("roc_auc", 0.0))
         ),
         "model_uri": f"models:/{SERVING_MODEL_NAME}/{target.current_stage}"
@@ -1007,17 +1015,17 @@ def get_model_version_history(
                     "version": str(version.version),
                     "stage": version.current_stage or "None",
                     "run_id": version.run_id,
-                    "weighted_f1": float(
+                    "weighted_f1": safe_float(
                         version.tags.get(
                             "weighted_f1", run.data.metrics.get("weighted_f1", 0.0)
                         )
                     ),
-                    "accuracy": float(
+                    "accuracy": safe_float(
                         version.tags.get(
                             "accuracy", run.data.metrics.get("accuracy", 0.0)
                         )
                     ),
-                    "roc_auc": float(
+                    "roc_auc": safe_float(
                         version.tags.get(
                             "roc_auc", run.data.metrics.get("roc_auc", 0.0)
                         )
@@ -1064,9 +1072,9 @@ def get_recent_run_summaries(
                 "experiment_id": row.get("experiment_id"),
                 "status": row.get("status"),
                 "run_name": row.get("tags.mlflow.runName"),
-                "weighted_f1": float(row.get("metrics.weighted_f1", 0.0) or 0.0),
-                "accuracy": float(row.get("metrics.accuracy", 0.0) or 0.0),
-                "roc_auc": float(row.get("metrics.roc_auc", 0.0) or 0.0),
+                "weighted_f1": safe_float(row.get("metrics.weighted_f1", 0.0) or 0.0),
+                "accuracy": safe_float(row.get("metrics.accuracy", 0.0) or 0.0),
+                "roc_auc": safe_float(row.get("metrics.roc_auc", 0.0) or 0.0),
                 "start_time": row.get("start_time").isoformat()
                 if hasattr(row.get("start_time"), "isoformat")
                 else str(row.get("start_time")),
