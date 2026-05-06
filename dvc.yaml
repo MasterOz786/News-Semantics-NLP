@@ -2,6 +2,49 @@ stages:
   generate_fake_news_dataset:
     cmd: ./venv311/bin/python3 datasets/scripts/fake-generate.py
     deps:
-    - datasets/scripts/fake-generate.py
+      - datasets/scripts/fake-generate.py
     outs:
-    - datasets/generated_fakenews/fake_news_dataset.csv
+      - datasets/generated_fakenews/fake_news_dataset.csv
+
+  build_container_stack:
+    cmd: docker compose build
+    deps:
+      - Dockerfile
+      - docker-compose.yml
+      - requirements.txt
+
+  task6_mlflow_containerized:
+    cmd: docker compose run --rm api sh -c "python task6_mlflow.py && mkdir -p pipeline_artifacts && printf 'task6 containerized pipeline completed\n' > pipeline_artifacts/task6_mlflow_containerized.txt"
+    deps:
+      - Dockerfile
+      - docker-compose.yml
+      - requirements.txt
+      - task6_mlflow.py
+      - nlp_pipeline.py
+      - tasks_4_5.py
+      - datasets/covid19-fakenews
+      - datasets/fakenewsnet
+      - datasets/isotfakenews
+      - datasets/liar-dataset
+      - datasets/generated_fakenews/fake_news_dataset.csv
+    outs:
+      - pipeline_artifacts/task6_mlflow_containerized.txt
+
+  task7_api_tests_containerized:
+    cmd: docker compose run --rm api sh -c "pytest -q test_api.py && mkdir -p pipeline_artifacts && printf 'task7 containerized api tests passed\n' > pipeline_artifacts/task7_api_tests_containerized.txt"
+    deps:
+      - Dockerfile
+      - docker-compose.yml
+      - requirements.txt
+      - app.py
+      - test_api.py
+      - task6_mlflow.py
+      - nlp_pipeline.py
+      - tasks_4_5.py
+      - datasets/covid19-fakenews
+      - datasets/fakenewsnet
+      - datasets/isotfakenews
+      - datasets/liar-dataset
+      - datasets/generated_fakenews/fake_news_dataset.csv
+    outs:
+      - pipeline_artifacts/task7_api_tests_containerized.txt

@@ -1,0 +1,30 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fake-news-api
+    working_dir: /app
+    command: uvicorn app:app --host 0.0.0.0 --port 8000
+    ports:
+      - "8000:8000"
+    environment:
+      PYTHONUNBUFFERED: "1"
+    volumes:
+      - .:/app
+    restart: unless-stopped
+
+  mlflow-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fake-news-mlflow-ui
+    working_dir: /app
+    command: mlflow ui --host 0.0.0.0 --port 5001 --backend-store-uri sqlite:///mlflow.db
+    ports:
+      - "5001:5001"
+    environment:
+      PYTHONUNBUFFERED: "1"
+    volumes:
+      - .:/app
+    restart: unless-stopped

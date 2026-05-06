@@ -87,3 +87,33 @@
 2026-05-06 06:52:58,748 | INFO | GET /docs status=200 client=127.0.0.1 time_ms=0.717
 2026-05-06 06:52:59,776 | INFO | GET /openapi.json status=200 client=127.0.0.1 time_ms=6.615
 2026-05-06 06:53:04,569 | INFO | GET /health status=200 client=127.0.0.1 time_ms=0.889
+2026-05-06 06:55:18,936 | INFO | POST /preprocess status=200 client=127.0.0.1 time_ms=1046.118
+2026-05-06 06:55:27,960 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=7.977
+2026-05-06 06:55:35,638 | INFO | POST /classify/batch status=422 client=127.0.0.1 time_ms=2.099
+2026-05-06 06:56:02,795 | INFO | POST /retrieve/similar status=200 client=127.0.0.1 time_ms=5.166
+2026-05-06 06:57:14,544 | INFO | Loaded model FakeNewsLogisticRegression version=2 stage=Production weighted_f1=0.8857
+2026-05-06 06:57:23,405 | INFO | Loaded model FakeNewsLogisticRegression version=2 stage=Production weighted_f1=0.8857
+2026-05-06 06:57:25,043 | INFO | GET /model/performance status=200 client=127.0.0.1 time_ms=54.439
+2026-05-06 06:57:28,882 | INFO | POST /retrieve/similar status=200 client=127.0.0.1 time_ms=4.760
+2026-05-06 06:57:29,478 | INFO | POST /retrieve/similar status=200 client=127.0.0.1 time_ms=4.515
+2026-05-06 06:57:33,337 | INFO | POST /classify/batch status=422 client=127.0.0.1 time_ms=2.327
+2026-05-06 06:57:50,804 | INFO | POST /classify/batch status=422 client=127.0.0.1 time_ms=0.819
+2026-05-06 06:57:58,763 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=1042.427
+2026-05-06 06:58:04,349 | INFO | POST /classify/batch status=422 client=127.0.0.1 time_ms=1.513
+2026-05-06 06:58:23,345 | INFO | POST /classify/batch status=200 client=127.0.0.1 time_ms=2.351
+2026-05-06 06:58:52,738 | INFO | POST /classify/batch status=422 client=127.0.0.1 time_ms=1.271
+2026-05-06 06:59:08,600 | INFO | POST /classify/batch status=200 client=127.0.0.1 time_ms=3.018
+2026-05-06 06:59:52,978 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=2.279
+2026-05-06 06:59:52,980 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=1.819
+2026-05-06 06:59:52,982 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=1.744
+2026-05-06 06:59:52,985 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=1.589
+2026-05-06 06:59:52,987 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=1.568
+2026-05-06 07:00:38,361 | INFO | GET / status=404 client=127.0.0.1 time_ms=0.326
+2026-05-06 07:00:38,376 | INFO | GET /favicon.ico status=404 client=127.0.0.1 time_ms=0.576
+2026-05-06 07:00:38,377 | INFO | GET /apple-touch-icon-precomposed.png status=404 client=127.0.0.1 time_ms=1.215
+2026-05-06 07:00:38,423 | INFO | GET /apple-touch-icon.png status=404 client=127.0.0.1 time_ms=0.625
+2026-05-06 07:00:43,073 | INFO | GET / status=404 client=127.0.0.1 time_ms=0.313
+2026-05-06 07:00:50,532 | INFO | GET /docs status=200 client=127.0.0.1 time_ms=1.395
+2026-05-06 07:00:58,058 | INFO | GET /openapi.json status=200 client=127.0.0.1 time_ms=5.808
+2026-05-06 07:01:18,619 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=8.195
+2026-05-06 07:01:26,692 | INFO | POST /classify status=200 client=127.0.0.1 time_ms=7.675
